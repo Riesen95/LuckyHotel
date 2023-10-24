@@ -1,12 +1,22 @@
-import React from 'react'
+import React from "react";
 
 function App() {
     return (
         <div>
             <nav class="navbar navbar-expand-lg">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">LuckyHotel</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <a class="navbar-brand" href="#">
+                        LuckyHotel
+                    </a>
+                    <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav"
+                        aria-controls="navbarNav"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                    >
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
@@ -21,7 +31,6 @@ function App() {
                                     Login
                                 </a>
                             </li>
-                           
                         </ul>
                     </div>
                 </div>
@@ -31,5 +40,3 @@ function App() {
 }
 
 export default App;
-
-
