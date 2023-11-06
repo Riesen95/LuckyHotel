@@ -6,6 +6,8 @@ import Homescreen from './screens/Homescreen';
 import { Routes } from 'react-router-dom';
 
 
+import Bookingscreen from './screens/Bookingscreen';
+
 function App() {
  
 
@@ -14,7 +16,8 @@ function App() {
         <Navbar />
         <BrowserRouter>
           <Routes>
-            <Route path="/home" element={<Homescreen />} />
+            <Route path="/home" element ={<Homescreen />} />
+            <Route path="/book/:roomid" element={<Bookingscreen />} />
           </Routes>
         </BrowserRouter>
       </div>
