@@ -1,19 +1,21 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Loader from "../components/Loader";
+import Error from "../components/Error";
 
 function Bookingscreen() {
     const [loading, setloading] = useState(true);
     const [error, seterror] = useState(false);
     const [room, setroom] = useState();
     let { roomid } = useParams(); 
-
+console.log("Test")
     useEffect(() => {
         const fetchData = async () => {
             try {
                 setloading(true);
                 
-                const response = await axios.post("/api/rooms/getroombyid", { roomid: roomid });
+                const response = await axios.get(`/api/rooms/getroombyid/${roomid}`);
                 setroom(response.data);
             } catch (error) {
                 console.error("Error fetching data: ", error);
@@ -30,7 +32,7 @@ function Bookingscreen() {
     return (
         <div className="m-5">
             
-            {loading?(<h1>Loading...</h1>): error ?(<h1>Error...</h1>) : (<div>
+            {loading?(<h1> <Loader/> </h1>): room ?(<div>
 
             <div className="row justify-content-center mt-5 bs">
                 <div className="col-md-6 text-center">
@@ -73,7 +75,8 @@ function Bookingscreen() {
 
             </div>
 
-            </div>)}
+            </div>) :(<Error/>)}
+            
 
         </div>
     );

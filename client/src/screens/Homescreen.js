@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Room from "../components/Room";
+import Loader from "../components/Loader";
+import Error from "../components/Error";
 
 function Homescreen() {
   const [rooms, setrooms] = useState([]);
@@ -25,18 +27,18 @@ function Homescreen() {
     <div className="container">
       <div className="row justify-content-center mt-5">
         {loading ? (
-          <h1>Loading...</h1>
-        ) : error ? (
-          <h1>Error</h1>
-        ) : (
+          <Loader/>
+        ) : rooms.length ? (
           rooms.map((room) => {
-            // Stellen Sie sicher, dass jedes Zimmer eine einzigartige ID hat
             return (
               <div key={room._id} className="col-md-9 mt-2">
                 <Room room={room} />
               </div>
             );
           })
+        ) : (
+          <Error/>
+          
         )}
       </div>
     </div>

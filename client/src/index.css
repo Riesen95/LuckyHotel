@@ -108,4 +108,16 @@ box-shadow: grey !important;
   left: 4px;
   bottom: -2px
  } 
+ input{
+  box-shadow: none !important;
+  margin-top: 10px;
+  border: 1px solid black !important;
+   
+ }
+ h2{
+    font-size: 30px !important;
+    padding: 10px;
+    font-weight: bold !important;
+    text-align: center;
+ }
 
