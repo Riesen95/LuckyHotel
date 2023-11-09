@@ -15,6 +15,7 @@ function Loginscreen() {
     };
     try {
       const result= (await axios.post('/api/users/login',user)).data
+      
        
      } catch (error) {
        console.log(error)
@@ -49,13 +50,7 @@ function Loginscreen() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <span
-                className="input-group-text"
-                onClick={togglePasswordVisibility}
-                style={{ cursor: "pointer" }}
-              >
-                <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} style={{ verticalAlign:'10px' }}  />
-              </span>
+              
             </div>
 
             <button className="btn btn-primary mt-3" onClick={Login}>

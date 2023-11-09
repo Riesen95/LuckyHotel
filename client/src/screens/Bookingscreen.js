@@ -9,7 +9,7 @@ function Bookingscreen() {
     const [error, seterror] = useState(false);
     const [room, setroom] = useState();
     let { roomid } = useParams(); 
-console.log("Test")
+
     useEffect(() => {
         const fetchData = async () => {
             try {
