@@ -1,42 +1,81 @@
 import React from "react";
 
-function App() {
-    return (
-        <div>
-            <nav class="navbar navbar-expand-lg">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="#">
-                        LuckyHotel
-                    </a>
+function Navbar() {
+  const user = JSON.parse(localStorage.getItem("currentUser"));
+  function logout(){
+    localStorage.removeItem('currentUser')
+    window.location.href='/login'
+  }
+  return (
+    <div>
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/home">
+            LuckyHotel
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon" ></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ">
+              {user ? (
+                <>
+                  <div class="dropdown ">
                     <button
-                        class="navbar-toggler"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#navbarNav"
-                        aria-controls="navbarNav"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation"
+                      class="btn btn-secondary dropdown-toggle"
+                      type="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
                     >
-                        <span class="navbar-toggler-icon"></span>
+                     <i class="fa-solid fa-user"></i> {user.name}
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="/register">
-                                    Register
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/login">
-                                    Login
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          Bookings
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#" onClick={logout}>
+                         Logout
+                        </a>
+                      </li>
+                      
+                    </ul>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link active"
+                      aria-current="page"
+                      href="/register"
+                    >
+                      Register
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/login">
+                      Login
+                    </a>
+                  </li>
+                </>
+              )}
+            </ul>
+          </div>
         </div>
-    );
+      </nav>
+    </div>
+  );
 }
 
-export default App;
+export default Navbar;

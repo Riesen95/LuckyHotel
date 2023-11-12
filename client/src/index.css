@@ -121,3 +121,7 @@ box-shadow: grey !important;
     text-align: center;
  }
 
+ .dropdown-toggle{
+  border: 0px solid grey !important;
+ }
+

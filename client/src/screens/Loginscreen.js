@@ -1,24 +1,37 @@
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+
 import axios from 'axios'
+import Loader from '../components/Loader';
+import Error from '../components/Error';
 
 function Loginscreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setloading] = useState(false)
+  const [error, setError] = useState(""); // Zustand für Fehlermeldungen hinzufügen
+
+
 
   async function Login() {
     const user = {
       email,
       password,
     };
+
+
     try {
+      setloading(true)
       const result= (await axios.post('/api/users/login',user)).data
+      setloading(false)
+      localStorage.setItem('currentUser',JSON.stringify(result));
+      window.location.href='/home'
       
        
      } catch (error) {
        console.log(error)
+        setloading(false)
+        setError(true); // Zustand für Fehlermeldungen hinzufügen
        
      }
   }
@@ -29,8 +42,10 @@ function Loginscreen() {
 
   return (
     <div>
+      {loading && (<Loader/>)}
       <div className="row d-flex justify-content-center align-items-center m-5">
         <div className="col-md-5">
+        {error && (<Error message = 'Invalid Login'/>)}
           <div className="bs">
             <h2>Login</h2>
 
