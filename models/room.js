@@ -12,17 +12,17 @@ const roomSchema = mongoose.Schema({
     },
     roomnumber:{
         type: Number,
-        required: true,
+        required: false,
     },
     rentperday:{
         type: Number,
         required: true,
     },
     imageurls:[],
-    correntbookings:[],
+    currentbookings:[],
     type:{
         type: String,
-        required: true,
+        required: false,
     },
     description: {
 

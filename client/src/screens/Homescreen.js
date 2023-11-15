@@ -48,7 +48,9 @@ function Homescreen() {
     <div className="container">
       <div className="row mt-5">
         <div className="col-md-3">
+          <Space>
           <RangePicker format={"DD-MM-YYYY"} onChange={filterByDate} />
+          </Space>
         </div>
       </div>
 
