@@ -20,11 +20,17 @@ router.post("/bookroom", async (req, res) => {
 
     const newbooking = await booking.save();
 
+    const from = new Date(fromdate);
+    const to = new Date(todate);
+
+    from.setHours(12, 0, 0, 0);
+    to.setHours(12, 0, 0, 0);
+
     const roomtemp = await Room.findOne({ _id: room._id });
     roomtemp.currentbookings.push({
       bookingid: newbooking._id,
-      fromdate,
-      todate,
+      fromdate: from,
+      todate: to,
       userid,
       status: "booked",
     });

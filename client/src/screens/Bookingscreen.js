@@ -12,10 +12,11 @@ function Bookingscreen() {
   let { roomid } = useParams();
   let { fromdate, todate } = useParams();
 
-  const firstdate = moment(fromdate, "DD-MM-YYY");
-  const lastdate = moment(todate, "DD-MM-YYY");
-  const totaldays = moment.duration(lastdate.diff(firstdate)).asDays() + 1;
+  const firstdate = moment(parseInt(fromdate, 10));
+  const lastdate = moment(parseInt(todate, 10));
+  const totaldays = moment.duration(lastdate.diff(firstdate)).asDays();
   const [totalamount, settotalamount] = useState();
+  const currentUser = localStorage.getItem('currentUser') ? JSON.parse(localStorage.getItem('currentUser')) : null;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,25 +38,51 @@ function Bookingscreen() {
     fetchData();
   }, [roomid]);
 
+  const bookroom = async () => {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     
-    const bookroom = async () => {
+    // Überprüfen, ob der Benutzer eingeloggt ist
+    if (currentUser && currentUser._id) {
         const bookingDetails = {
             room,
-            userid: JSON.parse(localStorage.getItem('currentUser'))._id,
-            fromdate,
-            todate,
+            userid: currentUser._id,
+            fromdate: parseInt(fromdate, 10),
+            todate: parseInt(todate, 10),
             totalamount,
             totaldays,
-            
-        }
+        };
         try {
-            
-            const result = await axios.post('/api/bookings/bookroom',bookingDetails)
-           
+            const result = await axios.post('/api/bookings/bookroom', bookingDetails);
+            // Weiterer Code für erfolgreiche Buchung
         } catch (error) {
-            
+            // Fehlerbehandlung
         }
+    } else {
+        // Benutzer ist nicht eingeloggt, also Meldung anzeigen oder auf Login-Seite umleiten
+        alert('Bitte loggen Sie sich ein, um ein Zimmer zu buchen');
+        // Hier können Sie auch eine Umleitung zur Login-Seite einfügen
     }
+}
+
+    // const bookroom = async () => {
+      
+    //     const bookingDetails = {
+    //         room,
+    //         userid: JSON.parse(localStorage.getItem('currentUser'))._id,
+    //         fromdate,
+    //         todate,
+    //         totalamount,
+    //         totaldays,
+            
+    //     }
+    //     try {
+            
+    //         const result = await axios.post('/api/bookings/bookroom',bookingDetails)
+           
+    //     } catch (error) {
+            
+    //     }
+    // }
 
 
     
@@ -82,9 +109,9 @@ function Bookingscreen() {
                 <hr />
 
                 <b>
-                  <p>Name : </p>
-                  <p>From Date : {fromdate}</p>
-                  <p>To Date : {todate}</p>
+                <p>Name :{currentUser ? currentUser.name : 'Gast'} </p>
+                  <p>From Date : {firstdate.format('DD-MM-YYYY')}</p>
+                  <p>To Date : {lastdate.format('DD-MM-YYYY')}</p>
                   <p>Max Count : {room.maxcount}</p>
                 </b>
               </div>
@@ -93,8 +120,8 @@ function Bookingscreen() {
                 <b>
                   <h1>Amount</h1>
                   <hr />
-                  <p>Total days : {totaldays} </p>
-                  <p>Price Per Day : {room.rentperday} </p>
+                  <p>Total nights : {totaldays} </p>
+                  <p>Price Per night : {room.rentperday} </p>
                   <p>Total Price : {totalamount} </p>
                 </b>
               </div>
