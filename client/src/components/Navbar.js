@@ -39,8 +39,8 @@ function Navbar() {
                     </button>
                     <ul class="dropdown-menu">
                       <li>
-                        <a class="dropdown-item" href="/bookings">
-                          Bookings
+                        <a class="dropdown-item" href="/profile">
+                          Profile
                         </a>
                       </li>
                       <li>

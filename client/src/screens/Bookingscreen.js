@@ -24,6 +24,11 @@ function Bookingscreen() {
 
   useEffect(() => {
     const fetchData = async () => {
+      // if(!localStorage.getItem('currenUser')){
+      //   window.location.href='/login'
+      // }
+
+
       try {
         setloading(true);
 
@@ -62,7 +67,7 @@ function Bookingscreen() {
         const result = await axios.post("/api/bookings/bookroom",bookingDetails);
         setloading(false);
         Swal.fire('Congratulation',' Your Room booked Successfully','success').then(result=>{
-          window.location.href='/bookings'
+          window.location.href='/profile'
         })
         
         

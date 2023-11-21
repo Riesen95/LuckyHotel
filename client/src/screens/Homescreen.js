@@ -113,11 +113,9 @@ function Homescreen() {
               filterBySearch(e.target.value);
             }}
           />
-
-
         </div>
 
-        <div className="col-md-3">
+        <div className="col-md-4">
           <select className="form-control" value={Type}onChange={(e)=>{filterByType(e.target.value)}}>
             <option value="Alle">Alle</option>
             <option value="Mit Balkon">Mit Balkon</option>

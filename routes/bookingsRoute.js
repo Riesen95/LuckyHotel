@@ -71,4 +71,51 @@ router.post("/bookroom", async (req, res) => {
   }
 });
 
+router.post("/getbookingsbyuserid", async (req, res) => {
+
+  const userid = req.body.userid
+
+  try {
+    const bookings = await Booking.find({userid : userid})
+    res.send(bookings)
+
+  } catch (error) {
+    return res.status(400).json({error});
+
+    
+  }
+
+
+})
+
+router.post("/cancelbooking", async (req, res) => {
+  const { bookingid, roomid } = req.body; 
+  try {
+    const booking = await Booking.findOne({ _id: bookingid });
+    if (booking) {
+      booking.status = 'cancelled'; // Ändern Sie bookings in booking
+      await booking.save();
+
+      const room = await Room.findOne({ _id: roomid });
+      if (room) {
+        const bookings = room.currentbookings;
+        const temp = bookings.filter(booking => booking.bookingid.toString() !== bookingid);
+        room.currentbookings = temp;
+        await room.save();
+
+        res.send('Your booking cancelled successfully');
+      } else {
+        res.status(404).json({ message: "Room not found" });
+      }
+    } else {
+      res.status(404).json({ message: "Booking not found" });
+    }
+  } catch (error) {
+    return res.status(500).json({ message: "Internal Server Error", error: error.message });
+  }
+});
+
+
+
+
 module.exports = router;

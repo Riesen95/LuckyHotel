@@ -21,22 +21,46 @@ body {
   font-family: "Montserrat", sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(-45deg, #3498db, #6e5977, #e74c3c, #ecd163);
+  background: linear-gradient(-45deg, #273036, #6e5977, #422926, #413916);
   background-size: 400% 400%;
   animation: backgroundAnimation 15s ease infinite;
 }
+p{
+  font-size: 20px !important;
+}
+
+/* In Ihrer globalen CSS-Datei */
+.ant-tabs-tab-btn{
+  font-size: 20px !important;
+}
+.text-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+
+
+
+
+
+
 
 .navbar {
-  background-color: var(--primary-color) !important;
+  background-color: red(--primary-color) !important;
 }
 
 .nav-link, .navbar-brand {
+  justify-content: center;
+  font-size:xx-large;
   color: white !important;
   transition: color 0.3s;
 }
 
 .nav-link:hover, .navbar-brand:hover {
   color: var(--hover-color) !important;
+
+
 }
 
 .navbar-nav {
@@ -57,11 +81,16 @@ body {
 }
 
 .btn {
-  background-color: var(--primary-color);
+  
+  background-color: rgb(204, 173, 173);
   color: white !important;
   box-shadow: var(--box-shadow);
   border-radius: var(--border-radius);
-  transition: background-color 0.3s, box-shadow 0.3s;
+  /* transition: background-color 0.3s, box-shadow 0.3s; */
+}
+.btn.btn-primary{
+  
+  border-color:var(--primary-color)
 }
 
 .btn:hover {
@@ -70,6 +99,7 @@ body {
 }
 
 .bs {
+  background-color: white;
   box-shadow: var(--box-shadow);
   margin-top: 20px !important;
   border-radius: var(--border-radius);
@@ -81,12 +111,14 @@ body {
 }
 
 input, select, .ant-picker {
+  justify-content: center;
+  align-items: center;
   box-shadow: none !important;
-  margin-top: 10px;
+  
   border: 1px solid black !important;
-  width: 100% !important;
+  width:100% !important;
   border-radius: var(--border-radius);
-  height: 35px !important;
+  height: 45px !important;
   transition: border-color 0.3s;
 }
 
@@ -114,4 +146,9 @@ h2 {
 
 .ant-picker-input input {
   border: none !important;
+}
+
+
+.btn-primary{
+  
 }
