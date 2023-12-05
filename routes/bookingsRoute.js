@@ -115,6 +115,15 @@ router.post("/cancelbooking", async (req, res) => {
   }
 });
 
+router.get("/getallbookings", async (req, res) => {
+  try {
+    const bookings = await Booking.find({});
+    res.send(bookings);
+  } catch (error) {
+    return res.status(500).json({ message: "Internal Server Error", error: error.message });
+  }
+});
+ 
 
 
 

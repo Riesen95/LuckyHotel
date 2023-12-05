@@ -127,7 +127,7 @@ input:focus, select:focus, .ant-picker:focus {
 }
 
 h1, h2 {
-  text-align: center;
+  text-align: left;
   font-weight: bold !important;
 }
 

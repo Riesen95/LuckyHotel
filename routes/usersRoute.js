@@ -60,5 +60,18 @@ router.post("/login", async (req, res) => {
     return res.status(400).json({ message: error.message });
   }
 });
+
+router.get("/getallusers", async (req, res) => {
+  try {
+    // Finden Sie alle Benutzer in der Datenbank
+    const users = await User.find({});
+    res.json(users);
+  } catch (error) {
+    // Fehlerbehandlung
+    return res.status(400).json({ message: error.message });
+  }
+}
+);
+
 module.exports = router;
 

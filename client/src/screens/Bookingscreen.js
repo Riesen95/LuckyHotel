@@ -106,7 +106,7 @@ function Bookingscreen() {
                 <hr />
 
                 <b>
-                  <p>Name :{currentUser ? currentUser.name : "Gast"} </p>
+                  <p>Name : {currentUser ? currentUser.name : "Gast"} </p>
                   <p>From Date : {firstdate.format("DD-MM-YYYY")}</p>
                   <p>To Date : {lastdate.format("DD-MM-YYYY")}</p>
                   <p>Max Count : {room.maxcount}</p>
@@ -123,14 +123,16 @@ function Bookingscreen() {
                 </b>
               </div>
               <div style={{ float: "right" }}>
-                <StripeCheckout
-                  amount={totalamount * 100}
-                  token={onToken}
-                  currency="EUR"
-                  stripeKey="pk_test_51OEAUFDsVLAUyGpWVbh0AC6iOyDmqQteksozLsAYQkfbrJPKC6mUQL5soi4nUu2OtMrxhq2Vj0rAfvX6LSGgIzr000QLKpfFVz"
-                >
-                  <button className="btn btn-primary">Pay Now</button>
-                </StripeCheckout>
+                {currentUser !== null ? (
+                  <StripeCheckout
+                    amount={totalamount * 100}
+                    token={onToken}
+                    currency="EUR"
+                    stripeKey="pk_test_51OEAUFDsVLAUyGpWVbh0AC6iOyDmqQteksozLsAYQkfbrJPKC6mUQL5soi4nUu2OtMrxhq2Vj0rAfvX6LSGgIzr000QLKpfFVz"
+                  >
+                    <button className="btn btn-primary">Pay Now</button>
+                  </StripeCheckout>
+                ) : <p>Login to book room</p>}
               </div>
             </div>
           </div>

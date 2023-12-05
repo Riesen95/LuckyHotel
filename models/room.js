@@ -10,7 +10,7 @@ const roomSchema = mongoose.Schema({
         type: Number,
         required: true,
     },
-    roomnumber:{
+    roomNumber:{
         type: Number,
         required: false,
     },
@@ -20,7 +20,7 @@ const roomSchema = mongoose.Schema({
     },
     imageurls:[],
     currentbookings:[],
-    type:{
+    Type:{
         type: String,
         required: false,
     },

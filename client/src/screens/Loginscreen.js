@@ -64,6 +64,11 @@ function Loginscreen() {
                 className="form-control"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                onKeyUp={(event) => {
+                  if (event.nativeEvent.key === 'Enter') {
+                    Login();
+                  }
+                }}
               />
               
             </div>
