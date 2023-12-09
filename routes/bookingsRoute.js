@@ -40,7 +40,7 @@ router.post("/bookroom", async (req, res) => {
         todate,
         totalamount,
         totaldays,
-        transactionId: payment.id, // Hier sollten Sie die tatsächliche Transaktions-ID verwenden
+        transactionId: payment.id, //
       });
 
       const newbooking = await booking.save();

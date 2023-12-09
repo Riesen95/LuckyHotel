@@ -4,12 +4,11 @@ const User = require("../models/user");
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
-// const myPlaintextPassword = 's0/\/\P4$$w0rD';
-// const someOtherPlaintextPassword = 'not_bacon';
+
 
 
 router.post("/register", async (req, res) => {
-  const { name, email, password } = req.body;  // Nehmen Sie die Daten aus der Anfrage
+  const { name, email, password } = req.body;  
 
   try {
     // Hashen des Passworts, das vom Benutzer bereitgestellt wurde

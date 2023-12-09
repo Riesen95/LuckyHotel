@@ -11,7 +11,7 @@ function Navbar() {
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
           <a class="navbar-brand" href="/home">
-            LuckyHotel
+            Lucky Hotel
           </a>
           <button
             class="navbar-toggler"

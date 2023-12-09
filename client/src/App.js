@@ -12,6 +12,7 @@ import Loginscreen from './screens/Loginscreen';
 import Profilescreen from './screens/Profilescreen';
 import Adminscreen from './screens/Adminscreen';
 import Access from './components/Access';
+import Startscreen from './screens/Startscreen';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
             <Route path='/login' element={<Loginscreen/>}/>
             <Route path='/profile' element={<Profilescreen/>}/>
             <Route path='/admin' element={<Access><Adminscreen/></Access>}/>
+            <Route path='/'element = {<Startscreen/>}/>
 
           </Routes>
         </BrowserRouter>
