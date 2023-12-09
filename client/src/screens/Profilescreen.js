@@ -18,20 +18,34 @@ const Profilescreen = () => {
   }, [user]);
 
   return (
-    <div className="m-3">
-      <Tabs defaultActiveKey="1">
-        <TabPane tab="Profile" key="1">
-          <p>My Profile</p>
-          <br />
-          <p>Name: {user?.name}</p>
-          <p>Email: {user?.email}</p>
-          <p>isAdmin: {user?.isAdmin ? "YES" : "No"}</p>
-        </TabPane>
-        <TabPane tab="Bookings" key="2">
-          <MyBookings />
-        </TabPane>
-      </Tabs>
+    <div className="row justify-content-center mt-5">
+      <div className="col-md-10">
+        <Tabs defaultActiveKey="1" centered>
+          <TabPane tab="My Bookings" key="1">
+            <MyBookings />
+          </TabPane>
+          <TabPane tab="My Profile" key="2">
+            <div className="row justify-content-left mt-5">
+              <div className="col-md-6">
+                <div className="bs">
+                  <h1>My Profile</h1>
+                  <p>
+                    <b>Name:</b> {user.name}
+                  </p>
+                  <p>
+                    <b>Email:</b> {user.email}
+                  </p>
+                  <p><b>isAdmin:</b> {user?.isAdmin ? "YES" : "No"}</p>
+                 
+                  
+                </div>
+              </div>
+            </div>
+          </TabPane>
+        </Tabs>
+      </div>
     </div>
+    
   );
 };
 
