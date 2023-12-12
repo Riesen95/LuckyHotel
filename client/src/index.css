@@ -172,3 +172,12 @@ h2 {
 
 /* Der Button behält sein ursprüngliches Design */
 
+a.carousel-control-prev,
+a.carousel-control-next {
+  transition: background-color 0.3s ease;
+}
+
+a.carousel-control-prev:hover,
+a.carousel-control-next:hover {
+  background-color: rgba(0,0,0,0.5);
+}
